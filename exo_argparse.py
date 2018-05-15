@@ -6,6 +6,7 @@ et écrit le résultat dans un fichier, si un nom de
 fichier est passé en paramètre, sur la sortie standard sinon.
 """
 
+import datetime
 import math
 from argparse import ArgumentParser
 
@@ -16,9 +17,12 @@ parser.add_argument('-o', '--output')
 args = parser.parse_args()
 
 resultat = math.sqrt(args.integer[0])
+now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+message = '{} - {}\n'.format(now, resultat)
+
 if args.output:
-	with open(args.output, 'w+') as file:
-		file.write(str(resultat))
+	with open(args.output, 'a+') as file:
+		file.write(message)
 	file.close()
 else:
-	print(resultat)
+	print(message)

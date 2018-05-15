@@ -53,7 +53,7 @@ class EnrichedCharacter(object):
             self.character['location']['name'],
             self.episode['episode'],
             self.episode['name'],
-            self.episode_date.strftime('%Y-%m-%d')
+            self.episode_date.strftime('%Y_%m_%d')
         ]
 
 
@@ -125,7 +125,7 @@ def main(output_file):
 
 if __name__ == "__main__":
     parser = ArgumentParser(description='Rick&Morty API scrapper')
-    parser.add_argument("--csvfile", help='Path for output csv file')
+    parser.add_argument("--csvfile", required=True, help='Path for output csv file')
     args = parser.parse_args()
 
     main(args.csvfile)
